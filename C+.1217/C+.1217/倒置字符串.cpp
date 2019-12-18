@@ -4,7 +4,7 @@
 #include <algorithm>
 using namespace std;
 
-int main()
+int main1()
 {
 	string s;//¶¨Òå×Ö·û´®
 
