@@ -6,8 +6,9 @@ class Solution {
 public:
 	int MoreThanHalfNum_Solution(vector<int> n1) 
 	{
-		int q = n1.size();
+		int q = n1.size();//记录数组的长度
 
+		//冒泡排序
 		for (int i = 0; i < q - 1; i++)
 		{
 			for (int j = 0; j < q - i - 1; j++)
@@ -21,7 +22,7 @@ public:
 			}
 		}
 
-		int p = n1[q / 2];
+		int p = n1[q / 2];//记录数组中的中间位置数字（如果存在超过数组长度一半的数字，那么这个数字一定是数组排序中间的数字）
 
 		int sum = 0;
 
@@ -29,11 +30,11 @@ public:
 		{
 			if (n1[i] == p)
 			{
-				sum++;
+				sum++;//记录中间数字出现的次数
 			}
 		}
 
-		if (sum > (q / 2))
+		if (sum > (q / 2))//如果数字次数超过一半，则输出，否则输出0
 		{
 			return p;
 		}
