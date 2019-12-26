@@ -3,7 +3,7 @@
 #include <string.h>
 #include "TXL.h"
 
-void inputData()// 添加数据
+void inputData()// 添加用户
 {
 	struct TXL tmp;
 
@@ -24,13 +24,14 @@ void inputData()// 添加数据
 	scanf("%199s", tmp.addr);
 
 	int i;
-	for (i = 0; i < g_count; i++)
+	for (i = 0; i < g_count; i++)//用户按照姓名首字母排序
 	{
 		if (strcmp(g_allMen[i].name, tmp.name) > 0)
 		{
 			break;
 		}
 	}
+
 	int j;
 	for (j = g_count; j > i; j--)
 	{
@@ -107,7 +108,7 @@ void outputSearchData(int * data)//输出查找
 	}
 }
 
-int catchOneData(char *find)//删除数据
+int catchOneData(char *find)// 查找删除的条目，并且输出删除的数据标号
 {
 	int schres[1001] = { 0 };
 	searchData(find, schres);
@@ -133,7 +134,17 @@ int catchOneData(char *find)//删除数据
 	}
 }
 
-void changeDate(char * name)
+void deleteOneData(int n)//删除指定标号的数据
+{
+	int i;
+	for (i = n; i < g_count; i++)
+	{
+		g_allMen[i] = g_allMen[i + 1];
+	}
+	g_count--;
+}
+
+void changeDate(char * name)//修改数据
 {
 	int tmp = 0;
 	int i, j;
@@ -175,7 +186,7 @@ void changeDate(char * name)
 	getchar();
 }
 
-void outputData()//输出数据
+void outputData()//显示通讯录用户
 {
 	int i;
 	if (g_count == 0)
@@ -195,14 +206,3 @@ void outputData()//输出数据
 			g_allMen[i].addr);
 	}
 }
-
-void deleteOneData(int n)//清空通讯录
-{
-	int i;
-	for (i = n; i < g_count; i++)
-	{
-		g_allMen[i] = g_allMen[i + 1];
-	}
-	g_count--;
-}
-

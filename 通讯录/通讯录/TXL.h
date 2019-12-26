@@ -22,12 +22,12 @@ struct TXL
 	int age;         //年龄
 };
 
-void inputData();                                 //输入数据
-void outputData();                                //输出数据
-void searchData(char * find, int * searchres);    //查找数据
-void changeDate(char * name);                     //修改数据
-void outputSearchData(int * data);                //输出查找
-int catchOneData(char *find);                     //删除数据
-void deleteOneData(int n);                        //清空通讯录
+void inputData();                                 
+void outputData();                                
+void searchData(char * find, int * searchres);    
+void changeDate(char * name);                     
+void outputSearchData(int * data);                
+int catchOneData(char *find);                     
+void deleteOneData(int n);                        
 
 #endif /* _TXL_H */
