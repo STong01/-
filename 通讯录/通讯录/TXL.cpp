@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "TXL.h"
 
@@ -10,14 +11,15 @@ int menu()
 {
 	int tmp, ret;
 	printf("\n"
-		"*  ********************  *\n"
-		"*  1.  添加联系人信息    *\n"
-		"*  2.删除指定联系人信息  *\n"
-		"*  3.查找指定联系人信息  *\n"
-		"*  4.修改指定联系人信息  *\n"
-		"*  5.显示所有联系人信息  *\n"
-		"*  6.  清空所有联系人    *\n"
-		"*  ********************  *\n"
+		"*  *********************  *\n"
+		"*  1、  添加联系人信息    *\n"
+		"*  2、删除指定联系人信息  *\n"
+		"*  3、查找指定联系人信息  *\n"
+		"*  4、修改指定联系人信息  *\n"
+		"*  5、显示所有联系人信息  *\n"
+		"*  6、  清空所有联系人    *\n"
+		"*  0、    退出通讯录      *\n"
+		"*  *********************  *\n"
 		"\n"
 		"请输入选项："
 		"\n");
@@ -31,9 +33,10 @@ void TXL()
 	int ret;
 	char str[256] = { 0 };
 	int searchRes[1001] = { 0 };
-	while (1)
+	do
 	{
 		cd = menu();
+		system("cls");
 		switch (cd)
 		{
 		case ADD_MEN:
@@ -41,7 +44,7 @@ void TXL()
 			break;
 
 		case DELETE_MEN:
-			printf("请输入你要删除的条目：\n");
+			printf("请输入你要删除的用户：\n");
 			memset(str, 0, sizeof(str));
 			scanf("%s", str);
 			ret = catchOneData(str);
@@ -80,6 +83,7 @@ void TXL()
 		case EMPTY_MEN:
 			memset(g_allMen, 0, g_count * sizeof(struct TXL));
 			g_count = 0;
+			printf("操作完成\n");
 			break;
 
 		case -1:
@@ -89,7 +93,7 @@ void TXL()
 		default:
 			printf("输入有误，请重新输入\n");
 		}
-	}
+	} while (cd != 0);
 }
 
 int main()
