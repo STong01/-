@@ -94,10 +94,10 @@ void outputSearchData(int * data)//输出查找
 		return;
 	}
 
-	printf("     姓名     性别 年龄     电话      住址\n");
+	printf("     姓名  性别 年龄     电话   住址\n");
 	for (i = 1; i <= data[0]; i++)
 	{
-		printf("%2d %-10s %3c  %3d  %11s %s\n",
+		printf("%2d %6s %3c  %3d  %11s %s\n\n",
 			i,
 			g_allMen[data[i]].name,
 			g_allMen[data[i]].gender,
@@ -137,10 +137,12 @@ void changeDate(char * name)
 {
 	int tmp = 0;
 	int i, j;
+	int ret;
 
 	for (j = 0; j < g_count; j++)
 	{
-		if (g_allMen[j].name == name)
+		ret = strcmp(g_allMen[j].name, name);
+		if (ret == 0)
 		{
 			i = j;
 			tmp = 1;
@@ -182,10 +184,10 @@ void outputData()//输出数据
 		return;
 	}
 
-	printf("  姓名     性别 年龄     电话        住址\n");
+	printf("  姓名  性别 年龄     电话      住址\n");
 	for (i = 0; i < g_count; i++)
 	{
-		printf("%-10s %3c  %3d  %11s %s\n",
+		printf("%6s %3c  %3d  %11s %s\n",
 			g_allMen[i].name,
 			g_allMen[i].gender,
 			g_allMen[i].age,
