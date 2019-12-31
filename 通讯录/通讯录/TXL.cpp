@@ -60,7 +60,7 @@ void TXL()
 			break;
 
 		case SEARCH_MEN:
-			printf("请输入你要检索的字符串：\n");
+			printf("请输入你要检索的信息：\n");
 			memset(str, 0, sizeof(str));
 			memset(searchRes, 0, sizeof(searchRes));
 			scanf("%s", str);
