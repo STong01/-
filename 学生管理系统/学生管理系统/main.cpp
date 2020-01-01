@@ -1,10 +1,11 @@
-#define _CRT_SECURE_NO_WARNINGS//宏定义
-#include<iostream>//c++头文件
-#include<iomanip>//setw函数的头文件
-#include"stdio.h"//c函数头文件
-#include"string.h"//c文件字符串头文件
+#define _CRT_SECURE_NO_WARNINGS
+#include<iostream>
+#include"conio.h"
+#include<iomanip>
+#include"stdio.h"
+#include"string.h"
 #include"stdlib.h"
-#include<fstream>//文件录入函数头文件
+#include<fstream>
 using namespace std;
 
 class student
@@ -69,7 +70,7 @@ void student::output()
 			cout << stu[t];
 		}
 	}
-	getchar();
+	_getch();
 }
 
 void student::find()
@@ -100,7 +101,7 @@ void student::find()
 			<< setw(7) << temp.score[1] << setw(7) << temp.score[2] << setw(7) << temp.score[3] << setw(7) << temp.score[4]
 			<< setw(7) << temp.score[5] << setw(9) << temp.score[6] << setw(9) << temp.last << endl;
 	}
-	getchar();
+	_getch();
 }
 
 void student::xg()
@@ -148,7 +149,7 @@ void student::xg()
 		stu[t].last = (int)(stu[t].score[6] * 0.3 + stu[t].average*0.7);
 		cout << "修改成功 !" << endl;
 	}
-	getchar();
+	_getch();
 }
 
 void student::sc()
@@ -182,7 +183,7 @@ void student::sc()
 			cin >> c;
 		}
 	} while (toupper(c) == 'Y');
-	getchar();
+	_getch();
 }
 
 void student::baocun()
@@ -194,14 +195,14 @@ void student::baocun()
 	if (!fout)cout << "文件打不开！" << endl;
 	else
 	{
-		for (int i = 0; i<n; i++)
+		for (int i = 0; i < n; i++)
 			fout << ' ' << stu[i].number << ' ' << stu[i].name << ' ' << stu[i].sex
 			<< ' ' << stu[i].score[0] << ' ' << stu[i].score[1] << ' ' << stu[i].score[2] << ' ' << stu[i].score[3] << ' ' << stu[i].score[4]
-			<< ' ' << stu[i].score[5] << ' ' << stu[i].score[6] << ' ' << stu[i].total << ' ' << stu[i].average << ' ' << stu[i].last;
+			<< ' ' << stu[i].score[5] << ' ' << stu[i].score[6] << ' ' << stu[i].total << ' ' << stu[i].average << ' ' << stu[i].last << endl;
 		cout << "保存成功" << endl;
 	}
 	fout.close();
-	getchar();
+	_getch();
 }
 
 void student::read()
@@ -223,7 +224,7 @@ void student::read()
 		cout << "文件读取成功！" << endl;
 	}
 	fin.close();
-	getchar();
+	_getch();
 }
 
 student & student::operator=(student & T)
