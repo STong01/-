@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#include <algorithm>
+#include <string>
 #include <stack>
 #include <vector>
 using namespace std;
@@ -96,33 +98,87 @@ public:
 #endif
 
 //最短无序连续子数组
+#if 0
+//给定一个整数数组，你需要寻找一个连续的子数组，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。
+//你找到的子数组应是最短的，请输出它的长度。
+//示例 1:
+//输入 : [2, 6, 4, 8, 10, 9, 15]
+//输出 : 5
+//解释 : 你只需要对[6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。
+
 class Solution {
 public:
 	int findUnsortedSubarray(vector<int>& nums) 
 	{
 		const int len = nums.size();
 		vector<int> copy = nums;
-		for (int i = 0; i < len - 1; i++)
-		{
-			for (int j = 0; j < len - 1 - i; j++)
-			{
-				if (copy[j]>copy[j + 1])
-				{
-					int cur = copy[j];
-					copy[j] = copy[j + 1];
-					copy[j + 1] = cur;
-				}
-			}
-		}
+		sort(copy.begin(), copy.end());
+
 		int l = 0, r = len - 1;
 		while (l<len && copy[l] == nums[l])
 			l++;
 		while (r >= l && copy[r] == nums[r])
 			r--;
-
 		return r - l + 1;
 	}
 };
+#endif
+
+//逆波兰表达式求值
+#if 0
+//根据逆波兰表示法，求表达式的值。
+//
+//有效的运算符包括  + , -, *, / 。每个运算对象可以是整数，也可以是另一个逆波兰表达式。
+//
+//说明：
+//
+//示例 1：
+//输入 : ["2", "1", "+", "3", "*"] 
+//输出 : 9
+//解释 : ((2 + 1) * 3) = 9
+class Solution {
+public:
+	bool panduan(string s)
+	{
+		if (s == "+" || s == "-" || s == "*" || s == "/")
+			return true;
+
+		return false;
+	}
+	int evalRPN(vector<string>& tokens) 
+	{
+		int a;
+		int b;
+		stack<int>s;
+		for (auto i = tokens.begin(); i != tokens.end(); i++)
+		{
+			if (!panduan(*i))
+			{
+				s.push(stoi(*i));
+			}
+			else
+			{
+				a = s.top();
+				s.pop();
+				b = s.top();
+				s.pop();
+				if (*i == "+")
+					s.push(b + a);
+
+				else if (*i == "-")
+					s.push(b - a);
+
+				else if (*i == "*")
+					s.push(b * a);
+
+				else if (*i == "/")
+					s.push(b / a);
+			}
+		}
+		return s.top();
+	}
+};
+#endif
 
 
 int func(int i, int j) 
@@ -134,10 +190,6 @@ int func(int i, int j)
 
 int main()
 {
-
-	Solution A;
-	vector<int> nums = { 2, 6, 4, 8, 10, 9, 15 };
-	A.findUnsortedSubarray(nums);
 
 	system("pause");
 	return 0;
